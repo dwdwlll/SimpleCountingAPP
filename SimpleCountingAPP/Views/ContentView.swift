@@ -9,17 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var store = CountItemStore()
+    @StateObject private var skinStore = SkinStore()
     @State private var showingAddSheet = false
     @State private var newItemName = ""
     @State private var editMode = EditMode.inactive
     @State private var selectedItems = Set<UUID>()
+    @State private var showingSkinShop = false
     
     var body: some View {
         NavigationView {
             ZStack {
                 List(selection: $selectedItems) {
                     ForEach(store.items) { item in
-                        NavigationLink(destination: CountingView(item: item, store: store)) {
+                        NavigationLink(destination: CountingView(item: item, store: store, skinStore: skinStore)) {
                             HStack {
                                 Text(item.name)
                                     .font(.headline)
@@ -51,6 +53,14 @@ struct ContentView: View {
                     
                     ToolbarItem(placement: .navigationBarTrailing) {
                         HStack {
+                            // Skin shop button
+                            Button(action: {
+                                showingSkinShop = true
+                            }) {
+                                Image(systemName: "paintbrush.fill")
+                            }
+                            .disabled(editMode == .active)
+                            
                             if !store.items.isEmpty {
                                 Button(editMode == .active ? "完成" : "选择") {
                                     withAnimation {
@@ -90,6 +100,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingAddSheet) {
                 AddItemSheet(isPresented: $showingAddSheet, store: store)
+            }
+            .sheet(isPresented: $showingSkinShop) {
+                SkinShopView(skinStore: skinStore)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

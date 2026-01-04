@@ -14,6 +14,11 @@
 		3D000009000000000001 /* CountItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000010000000000001 /* CountItemStore.swift */; };
 		3D000011000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D000012000000000001 /* Assets.xcassets */; };
 		3D000013000000000001 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D000014000000000001 /* Preview Assets.xcassets */; };
+		3D000035000000000001 /* CounterSkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000036000000000001 /* CounterSkin.swift */; };
+		3D000037000000000001 /* SkinStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000038000000000001 /* SkinStore.swift */; };
+		3D000039000000000001 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000040000000000001 /* PaymentService.swift */; };
+		3D000041000000000001 /* StripePaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000042000000000001 /* StripePaymentService.swift */; };
+		3D000043000000000001 /* SkinShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000044000000000001 /* SkinShopView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		3D000012000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D000014000000000001 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3D000016000000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D000036000000000001 /* CounterSkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterSkin.swift; sourceTree = "<group>"; };
+		3D000038000000000001 /* SkinStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinStore.swift; sourceTree = "<group>"; };
+		3D000040000000000001 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		3D000042000000000001 /* StripePaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentService.swift; sourceTree = "<group>"; };
+		3D000044000000000001 /* SkinShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinShopView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,7 @@
 				3D000021000000000001 /* Views */,
 				3D000022000000000001 /* ViewModels */,
 				3D000023000000000001 /* Models */,
+				3D000045000000000001 /* Services */,
 				3D000012000000000001 /* Assets.xcassets */,
 				3D000016000000000001 /* Info.plist */,
 				3D000024000000000001 /* Preview Content */,
@@ -74,6 +85,7 @@
 			children = (
 				3D000004000000000001 /* ContentView.swift */,
 				3D000006000000000001 /* CountingView.swift */,
+				3D000044000000000001 /* SkinShopView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -82,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				3D000010000000000001 /* CountItemStore.swift */,
+				3D000038000000000001 /* SkinStore.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -90,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				3D000008000000000001 /* CountItem.swift */,
+				3D000036000000000001 /* CounterSkin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -100,6 +114,15 @@
 				3D000014000000000001 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3D000045000000000001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3D000040000000000001 /* PaymentService.swift */,
+				3D000042000000000001 /* StripePaymentService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +201,11 @@
 				3D000007000000000001 /* CountItem.swift in Sources */,
 				3D000009000000000001 /* CountItemStore.swift in Sources */,
 				3D000001000000000001 /* SimpleCountingAPPApp.swift in Sources */,
+				3D000035000000000001 /* CounterSkin.swift in Sources */,
+				3D000037000000000001 /* SkinStore.swift in Sources */,
+				3D000039000000000001 /* PaymentService.swift in Sources */,
+				3D000041000000000001 /* StripePaymentService.swift in Sources */,
+				3D000043000000000001 /* SkinShopView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
