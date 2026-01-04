@@ -10,6 +10,9 @@
 - ✅ 加减按钮操作
 - ✅ 自动保存计数结果到本地
 - ✅ 支持 iOS 和 iPadOS
+- ✅ **皮肤系统** - 自定义计数器外观
+- ✅ **皮肤商城** - 购买和应用主题
+- ✅ **Stripe 支付集成** - 可扩展支持多种支付平台
 
 ## 项目结构
 
@@ -18,12 +21,18 @@ SimpleCountingAPP/
 ├── SimpleCountingAPP/
 │   ├── SimpleCountingAPPApp.swift      # 应用入口
 │   ├── Models/
-│   │   └── CountItem.swift             # 计数项数据模型
+│   │   ├── CountItem.swift             # 计数项数据模型
+│   │   └── CounterSkin.swift           # 皮肤数据模型
 │   ├── ViewModels/
-│   │   └── CountItemStore.swift        # 数据存储和管理
+│   │   ├── CountItemStore.swift        # 计数项存储和管理
+│   │   └── SkinStore.swift             # 皮肤存储和管理
 │   ├── Views/
 │   │   ├── ContentView.swift           # 主列表界面
-│   │   └── CountingView.swift          # 计数详情界面
+│   │   ├── CountingView.swift          # 计数详情界面
+│   │   └── SkinShopView.swift          # 皮肤商城界面
+│   ├── Services/
+│   │   ├── PaymentService.swift        # 支付服务接口
+│   │   └── StripePaymentService.swift  # Stripe 支付实现
 │   ├── Assets.xcassets/                # 资源文件
 │   └── Info.plist                      # 应用配置
 └── SimpleCountingAPP.xcodeproj/        # Xcode项目文件
@@ -57,6 +66,20 @@ SimpleCountingAPP/
 - 点击 **重置** 按钮将计数归零
 - 所有操作自动保存
 
+### 皮肤商城
+- 在主界面点击右上角 **画笔图标** 进入皮肤商城
+- 浏览不同分类的皮肤主题
+- 点击皮肤预览和购买
+- 已购买的皮肤可以随时切换应用
+- 支持 8 种预设皮肤，包括免费和付费选项
+
 ## 开发者
 
 dwdwlll
+
+## 文档
+
+- [ARCHITECTURE.md](ARCHITECTURE.md) - 详细的架构说明
+- [FEATURES.md](FEATURES.md) - 功能实现清单
+- [SKIN_SYSTEM.md](SKIN_SYSTEM.md) - 皮肤系统完整文档
+- [SUMMARY.md](SUMMARY.md) - 项目完成总结
