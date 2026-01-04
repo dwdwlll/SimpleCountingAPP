@@ -76,8 +76,7 @@ struct CountingView: View {
     }
     
     private var formattedCount: String {
-        let clampedCount = min(max(currentCount, minCount), maxCount)
-        return String(format: "%04d", clampedCount)
+        return String(format: "%04d", currentCount)
     }
     
     private func incrementCount() {

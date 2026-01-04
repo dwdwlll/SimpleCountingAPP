@@ -101,7 +101,7 @@ struct ContentView: View {
     
     private func deleteSelectedItems() {
         let itemsToDelete = store.items.filter { selectedItems.contains($0.id) }
-        store.deleteItems(items: itemsToDelete)
+        store.deleteItems(itemsToDelete: itemsToDelete)
         selectedItems.removeAll()
         editMode = .inactive
     }
