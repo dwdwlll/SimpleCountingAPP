@@ -104,14 +104,15 @@ struct SkinShopView: View {
                     skinStore.purchaseSkin(skin.id)
                     skinStore.selectSkin(skin)
                     showingPurchaseSheet = false
-                    print("Purchase successful: \(transactionId)")
+                    // Transaction completed successfully: \(transactionId)
                     
                 case .cancelled:
                     showingPurchaseSheet = false
                     
                 case .failed(let error):
-                    print("Purchase failed: \(error.localizedDescription)")
-                    // In production, show error alert to user
+                    // Handle error - in production, show alert to user
+                    // Error: \(error.localizedDescription)
+                    showingPurchaseSheet = false
                 }
             }
         }

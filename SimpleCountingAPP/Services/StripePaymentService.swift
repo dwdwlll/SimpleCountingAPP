@@ -30,6 +30,19 @@ class StripePaymentService: PaymentService {
             return
         }
         
+        // Validate amount
+        guard amount > 0 else {
+            completion(.failed(error: PaymentError.invalidAmount))
+            return
+        }
+        
+        // Validate currency (basic ISO 4217 check)
+        let validCurrencies = ["USD", "EUR", "GBP", "JPY", "CNY", "AUD", "CAD"]
+        guard validCurrencies.contains(currency.uppercased()) else {
+            completion(.failed(error: PaymentError.unknown("Invalid currency code")))
+            return
+        }
+        
         // In a real implementation, this would:
         // 1. Create a payment intent on your server
         // 2. Use Stripe SDK to present payment sheet

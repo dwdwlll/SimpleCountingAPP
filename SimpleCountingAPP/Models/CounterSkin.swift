@@ -67,7 +67,7 @@ struct CounterSkin: Identifiable, Codable, Equatable {
     
     // Helper to get Color from hex string
     func color(from hex: String) -> Color {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        let hex = hex.trimmingCharacters(in: CharacterSet(charactersIn: "#"))
         var int: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&int)
         let a, r, g, b: UInt64

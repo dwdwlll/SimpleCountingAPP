@@ -27,7 +27,7 @@ class SkinStore: ObservableObject {
     }
     
     func selectSkin(_ skin: CounterSkin) {
-        guard skin.isPurchased || purchasedSkinIds.contains(skin.id) else {
+        guard isSkinPurchased(skin.id) else {
             return
         }
         selectedSkinId = skin.id
