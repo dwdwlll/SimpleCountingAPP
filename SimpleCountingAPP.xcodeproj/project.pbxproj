@@ -19,6 +19,11 @@
 		3D000039000000000001 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000040000000000001 /* PaymentService.swift */; };
 		3D000041000000000001 /* StripePaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000042000000000001 /* StripePaymentService.swift */; };
 		3D000043000000000001 /* SkinShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000044000000000001 /* SkinShopView.swift */; };
+		3D000046000000000001 /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000047000000000001 /* AuthState.swift */; };
+		3D000048000000000001 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000049000000000001 /* NetworkService.swift */; };
+		3D000050000000000001 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000051000000000001 /* LoginView.swift */; };
+		3D000052000000000001 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000053000000000001 /* RegisterView.swift */; };
+		3D000054000000000001 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D000055000000000001 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		3D000040000000000001 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
 		3D000042000000000001 /* StripePaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentService.swift; sourceTree = "<group>"; };
 		3D000044000000000001 /* SkinShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinShopView.swift; sourceTree = "<group>"; };
+		3D000047000000000001 /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
+		3D000049000000000001 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		3D000051000000000001 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3D000053000000000001 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		3D000055000000000001 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +96,9 @@
 				3D000004000000000001 /* ContentView.swift */,
 				3D000006000000000001 /* CountingView.swift */,
 				3D000044000000000001 /* SkinShopView.swift */,
+				3D000051000000000001 /* LoginView.swift */,
+				3D000053000000000001 /* RegisterView.swift */,
+				3D000055000000000001 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,6 +117,7 @@
 			children = (
 				3D000008000000000001 /* CountItem.swift */,
 				3D000036000000000001 /* CounterSkin.swift */,
+				3D000047000000000001 /* AuthState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +135,7 @@
 			children = (
 				3D000040000000000001 /* PaymentService.swift */,
 				3D000042000000000001 /* StripePaymentService.swift */,
+				3D000049000000000001 /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -206,6 +221,11 @@
 				3D000039000000000001 /* PaymentService.swift in Sources */,
 				3D000041000000000001 /* StripePaymentService.swift in Sources */,
 				3D000043000000000001 /* SkinShopView.swift in Sources */,
+				3D000046000000000001 /* AuthState.swift in Sources */,
+				3D000048000000000001 /* NetworkService.swift in Sources */,
+				3D000050000000000001 /* LoginView.swift in Sources */,
+				3D000052000000000001 /* RegisterView.swift in Sources */,
+				3D000054000000000001 /* ProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

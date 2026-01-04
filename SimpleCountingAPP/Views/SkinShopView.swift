@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SkinShopView: View {
     @ObservedObject var skinStore: SkinStore
+    @ObservedObject var authState: AuthState
     @State private var selectedCategory: SkinCategory?
     @State private var showingPurchaseSheet = false
     @State private var skinToPurchase: CounterSkin?
@@ -91,27 +92,50 @@ struct SkinShopView: View {
     }
     
     private func purchaseSkin(_ skin: CounterSkin) {
+        guard let token = authState.token else {
+            isProcessingPayment = false
+            showingPurchaseSheet = false
+            return
+        }
+        
         isProcessingPayment = true
         
-        // Use payment manager to process purchase
-        PaymentManager.shared.purchase(itemId: skin.id, amount: skin.price) { result in
-            DispatchQueue.main.async {
-                isProcessingPayment = false
+        Task {
+            do {
+                // 1. 向服务器发送支付请求，创建支付意图
+                let amountInCents = Int(skin.price * 100) // 转换为分
+                let paymentIntent = try await NetworkService.shared.createPaymentIntent(
+                    token: token,
+                    itemId: skin.id,
+                    amount: amountInCents,
+                    currency: "usd"
+                )
                 
-                switch result {
-                case .success(let transactionId):
-                    // Mark skin as purchased
-                    skinStore.purchaseSkin(skin.id)
-                    skinStore.selectSkin(skin)
-                    showingPurchaseSheet = false
-                    // Transaction completed successfully: \(transactionId)
+                // 2. 模拟支付流程（在实际应用中，这里会调用 Stripe SDK）
+                // 等待一小段时间模拟支付过程
+                try await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+                
+                // 3. 确认支付
+                let confirmResult = try await NetworkService.shared.confirmPayment(
+                    token: token,
+                    paymentIntentId: paymentIntent.paymentIntentId
+                )
+                
+                await MainActor.run {
+                    if confirmResult.status == "succeeded" {
+                        // 支付成功，标记皮肤为已购买
+                        skinStore.purchaseSkin(skin.id)
+                        skinStore.selectSkin(skin)
+                    }
                     
-                case .cancelled:
+                    isProcessingPayment = false
                     showingPurchaseSheet = false
-                    
-                case .failed(let error):
-                    // Handle error - in production, show alert to user
-                    // Error: \(error.localizedDescription)
+                }
+                
+            } catch {
+                await MainActor.run {
+                    // 支付失败，显示错误（在生产环境中应该显示警告对话框）
+                    isProcessingPayment = false
                     showingPurchaseSheet = false
                 }
             }
@@ -299,7 +323,7 @@ struct PurchaseSheet: View {
                 .disabled(isProcessing)
                 .padding(.horizontal)
                 
-                Text("支付方式: Stripe")
+                Text("支付方式: Stripe (服务器端)")
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .padding(.bottom)
@@ -321,6 +345,6 @@ struct PurchaseSheet: View {
 
 struct SkinShopView_Previews: PreviewProvider {
     static var previews: some View {
-        SkinShopView(skinStore: SkinStore())
+        SkinShopView(skinStore: SkinStore(), authState: AuthState())
     }
 }

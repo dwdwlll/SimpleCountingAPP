@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct SimpleCountingAPPApp: App {
+    @StateObject private var authState = AuthState()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if authState.isAuthenticated {
+                ContentView()
+                    .environmentObject(authState)
+            } else {
+                LoginView(authState: authState)
+            }
         }
     }
 }

@@ -10,11 +10,13 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var store = CountItemStore()
     @StateObject private var skinStore = SkinStore()
+    @EnvironmentObject var authState: AuthState
     @State private var showingAddSheet = false
     @State private var newItemName = ""
     @State private var editMode = EditMode.inactive
     @State private var selectedItems = Set<UUID>()
     @State private var showingSkinShop = false
+    @State private var showingProfile = false
     
     var body: some View {
         NavigationView {
@@ -53,6 +55,14 @@ struct ContentView: View {
                     
                     ToolbarItem(placement: .navigationBarTrailing) {
                         HStack {
+                            // Profile button
+                            Button(action: {
+                                showingProfile = true
+                            }) {
+                                Image(systemName: "person.circle")
+                            }
+                            .disabled(editMode == .active)
+                            
                             // Skin shop button
                             Button(action: {
                                 showingSkinShop = true
@@ -102,7 +112,10 @@ struct ContentView: View {
                 AddItemSheet(isPresented: $showingAddSheet, store: store)
             }
             .sheet(isPresented: $showingSkinShop) {
-                SkinShopView(skinStore: skinStore)
+                SkinShopView(skinStore: skinStore, authState: authState)
+            }
+            .sheet(isPresented: $showingProfile) {
+                ProfileView(authState: authState)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
