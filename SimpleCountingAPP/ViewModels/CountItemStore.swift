@@ -28,9 +28,8 @@ class CountItemStore: ObservableObject {
     }
     
     func deleteItems(items: [CountItem]) {
-        self.items.removeAll { item in
-            items.contains { $0.id == item.id }
-        }
+        let idsToDelete = Set(items.map { $0.id })
+        self.items.removeAll { idsToDelete.contains($0.id) }
         saveItems()
     }
     

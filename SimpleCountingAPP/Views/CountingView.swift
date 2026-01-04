@@ -12,6 +12,9 @@ struct CountingView: View {
     @ObservedObject var store: CountItemStore
     @State private var currentCount: Int
     
+    private let minCount = 0
+    private let maxCount = 9999
+    
     init(item: CountItem, store: CountItemStore) {
         self.item = item
         self.store = store
@@ -73,26 +76,26 @@ struct CountingView: View {
     }
     
     private var formattedCount: String {
-        let clampedCount = min(max(currentCount, 0), 9999)
+        let clampedCount = min(max(currentCount, minCount), maxCount)
         return String(format: "%04d", clampedCount)
     }
     
     private func incrementCount() {
-        if currentCount < 9999 {
+        if currentCount < maxCount {
             currentCount += 1
             updateItem()
         }
     }
     
     private func decrementCount() {
-        if currentCount > 0 {
+        if currentCount > minCount {
             currentCount -= 1
             updateItem()
         }
     }
     
     private func resetCount() {
-        currentCount = 0
+        currentCount = minCount
         updateItem()
     }
     
